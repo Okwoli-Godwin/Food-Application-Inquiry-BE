@@ -3,6 +3,7 @@ import { asyncHandler } from "../error/asyncHandler";
 import bcrypt from "bcrypt";
 import { AppError, HttpCode } from "../error/errorSpellOut";
 import adminModel from "../Model/adminModel";
+import { VerifyAccount } from "../email/UserEmail";
 
 export const createAdmin = asyncHandler(
   async (req: Request, res: Response, next: NextFunction) => {
@@ -26,6 +27,8 @@ export const createAdmin = asyncHandler(
       password: hash,
       fullname
     });
+    VerifyAccount(register);
+
 
     return res.status(HttpCode.CREATED).json({
       message: "Admin created",

@@ -32,7 +32,7 @@ export const VerifyAccount = async (user: any) => {
   const loadFile = path.join(__dirname, "../views/User/UserWelcomeEmail.ejs");
 
   const ReadUserData = await ejs.renderFile(loadFile, {
-    name: user.name,
+    fullname: user.fullname,
   });
 
   const mailOptions = {
@@ -42,11 +42,11 @@ export const VerifyAccount = async (user: any) => {
     html: ReadUserData,
   };
 
-  transport.sendMail(mailOptions, (error, info) => {
+  transport.sendMail(mailOptions, (error: any, info: any) => {
     if (error) {
       console.log("Error:", error);
     } else {
-      console.log("Email sent:", info.response);
+      console.log("Email sent:", info);
     }
   });
 };
