@@ -16,10 +16,11 @@ exports.DBConnection = void 0;
 const enviromentvariables_1 = require("../enviromentvariables/enviromentvariables");
 const mongoose_1 = __importDefault(require("mongoose"));
 const URL = enviromentvariables_1.environmentVariables.MONGODBCONNECT;
+console.log(URL);
 const DBConnection = () => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const conn = yield mongoose_1.default.connect(URL);
-        if (mongoose_1.default.connection.host === "localhost") {
+        if (mongoose_1.default.connection.host === "0.0.0.0") {
             console.log("Connected to localhost");
         }
         else {

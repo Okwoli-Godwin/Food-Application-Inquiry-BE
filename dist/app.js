@@ -15,6 +15,11 @@ const ApplicationConfig = (app) => {
     app.use(express_1.default.json())
         .use((0, cors_1.default)())
         .use((0, morgan_1.default)("dev"))
+        .get("/", (req, res) => {
+        return res.status(200).json({
+            message: "API Ready for deployment"
+        });
+    })
         .use("/api/recipes", recipeRoutes_1.default)
         .use("/api/admin", adminRoutes_1.default)
         .all("*", (req, res, next) => {

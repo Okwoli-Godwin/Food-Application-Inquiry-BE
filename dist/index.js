@@ -10,11 +10,6 @@ const Database_1 = require("./config/Database");
 const app = (0, express_1.default)();
 (0, app_1.ApplicationConfig)(app);
 (0, Database_1.DBConnection)();
-app.get("/", (req, res) => {
-    return res.status(200).json({
-        message: "API Ready for deployment"
-    });
-});
 process.on("uncaughtException", (error) => {
     console.log("stop here: uncaughtException");
     console.log(error);

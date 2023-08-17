@@ -11,8 +11,16 @@ export const ApplicationConfig = (app: Application) => {
         .use(cors())
         .use(morgan("dev"))
 
+        .get("/", (req: Request, res: Response) => {
+  return res.status(200).json({
+    message: "API Ready for deployment"
+  })
+})
+
     .use("/api/recipes", RecipeRoute)
-    .use("/api/admin", AdminRoute)
+        .use("/api/admin", AdminRoute)
+        
+
     
         .all("*", (req: Request, res: Response, next: NextFunction) => {
             next(

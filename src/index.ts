@@ -9,12 +9,6 @@ const app: Application = express();
 ApplicationConfig(app)
 DBConnection()
 
-app.get("/", (req: Request, res: Response) => {
-  return res.status(200).json({
-    message: "API Ready for deployment"
-  })
-})
-
 process.on("uncaughtException", (error: Error) => {
   console.log("stop here: uncaughtException");
   console.log(error);
